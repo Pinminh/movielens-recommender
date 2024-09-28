@@ -1,0 +1,25 @@
+# OS files
+Desktop.ini
+
+# Virtual environments
+venv/
+env/
+
+# Python compiled files
+__pycache__/
+*.py[cod]
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Data files
+/data/ml-32m
+/data/ml-latest
+
+# Output files
+/output/*
+*.log
+
+# Miscellaneous files
+*~
+.vscode/

@@ -1,0 +1,4 @@
+# Recommender on Movielens' datasets
+
+## Purpose
+This project is proposed from CS curriculum of [Ho Chi Minh City University of Technology (HCMUT)](https://hcmut.edu.vn/), and served as an introduction into the well-known field of artificial intelligence (AI), specifically, [recommender systems](https://en.wikipedia.org/wiki/Recommender_system). For this end, the project explores multiple methods, algorithms for building recommender models: [kNN-based algorithms](https://en.wikipedia.org/wiki/K-nearest_neighbors_algorithm), [matrix factorization algorithms](https://en.wikipedia.org/wiki/Matrix_factorization_(recommender_systems)), and [SlopeOne](https://en.wikipedia.org/wiki/Slope_One). Results from these algorithms are compared against each other by multiple metrics to gain more insights into the models.
