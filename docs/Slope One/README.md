@@ -14,51 +14,47 @@ Cho một ma trận đánh giá *R* với kích thước *m × n*, trong đó:
 •	Nếu **R*ij*** = *∅*, điều đó có nghĩa là người dùng *i* chưa đánh giá sản phẩm *j*.  
 Mục tiêu: Dự đoán điểm đánh giá của người dùng đối với các sản phẩm mà họ chưa đánh giá (các ô **R*ij*** có giá trị rỗng trong ma trận) dựa trên các đánh giá hiện có.  
 ## 1. Tính điểm trung bình của người dùng
-\mathbf{\mu}_\mathbf{u}=\frac{\mathbf{1}}{\left|\mathbf{R}_\mathbf{u}\right|}\sum_{\mathbf{j}\in\mathbf{R}_\mathbf{u}}\mathbf{r}_{\mathbf{uj}}  
-![](calculateAverage.jpg)
-
+![](../images/calculateAverage.png)  
 Trong đó:  
-	: Là điểm trung bình mà người dùng *u* đã đánh giá.  
-	: Là tập hợp các sản phẩm mà người dùng *u* đã đánh giá.  
-  : Là số lượng sản phẩm người dùng *u* đã đánh giá.  
-	: Là điểm đánh giá của người dùng *u* cho sản phẩm *j*.  
-## 2. Công thức Độ Lệch
-\mathbf{dev}\left(\mathbit{i},\mathbit{j}\right)=\frac{\mathbf{1}}{\left|\mathbf{U}_{\mathbit{ij}}\right|}\sum_{\mathbit{u}\in\mathbit{U}_{\mathbit{ij}}}\mathbit{r}_{\mathbit{ui}}-\mathbit{r}_{\mathbit{uj}}  
-
+•	: Là điểm trung bình mà người dùng *u* đã đánh giá.  
+•***R<sub>u</sub>***: Là tập hợp các sản phẩm mà người dùng *u* đã đánh giá.  
+•***R<sub>u</sub>***: Là số lượng sản phẩm người dùng *u* đã đánh giá.  
+•***r<sub>uj</sub>***: Là điểm đánh giá của người dùng *u* cho sản phẩm *j*.  
+## 2. Công thức Độ Lệch 
+![](../images/itemDeviation.png)  
 Trong đó:  
-	: Là độ lệch trung bình giữa các điểm đánh giá của sản phẩm *i* và sản phẩm *j*.  
-	: Là số lượng người dùng đã đánh giá cả hai sản phẩm *i* và *j*.  
-	: Là tập hợp những người dùng đã đánh giá cả hai sản phẩm *i* và *j*.  
-	: Là điểm đánh giá của người dùng *u* cho sản phẩm *i*.  
-	: Là điểm đánh giá của người dùng *u* cho sản phẩm *j*.  
+•***dev(i,j)***: Là độ lệch trung bình giữa các điểm đánh giá của sản phẩm *i* và sản phẩm *j*.  
+•***|U<sub>ij</sub>|***: Là số lượng người dùng đã đánh giá cả hai sản phẩm *i* và *j*.  
+•***U<sub>ij</sub>***: Là tập hợp những người dùng đã đánh giá cả hai sản phẩm *i* và *j*.  
+•***r<sub>ui</sub>***: Là điểm đánh giá của người dùng *u* cho sản phẩm *i*.  
+•***r<sub>uj</sub>***: Là điểm đánh giá của người dùng *u* cho sản phẩm *j*.  
 ## 3. Công thức Dự đoán
-\widehat{\mathbit{r}_{\mathbit{ui}}}=\mathbf{\mu}_\mathbit{u}+\frac{\mathbf{1}}{\left|\mathbit{R}_\mathbit{i}\left(\mathbit{u}\right)\right|}\sum_{\mathbit{j}\in\mathbit{R}_\mathbit{i}\left(\mathbit{u}\right)}\mathbit{dev}\left(\mathbit{i},\mathbit{j}\right)
-
+![](../images/predictedRating.png)  
 Trong đó:  
-	: Là điểm dự đoán mà người dùng *u* sẽ cho sản phẩm *i*.  
-	: Là điểm trung bình mà người dùng *u* đã đánh giá. Nó phản ánh cách người dùng này thường đánh giá sản phẩm (ví dụ: một số người dùng thường cho điểm cao hơn những người khác).  
-	: Là tập hợp các sản phẩm liên quan, tức là tập hợp các sản phẩm *j* mà người dùng u đã đánh giá và cũng có ít nhất một người dùng chung với sản phẩm *i*.  
-	: Là số lượng sản phẩm liên quan trong .  
-	: Là độ lệch trung bình giữa các điểm đánh giá của sản phẩm *i* và sản phẩm *j*.  
+•	: Là điểm dự đoán mà người dùng *u* sẽ cho sản phẩm *i*.  
+•	: Là điểm trung bình mà người dùng *u* đã đánh giá. Nó phản ánh cách người dùng này thường đánh giá sản phẩm (ví dụ: một số người dùng thường cho điểm cao hơn những người khác).  
+•***R<sub>i</sub>(u)***: Là tập hợp các sản phẩm liên quan, tức là tập hợp các sản phẩm *j* mà người dùng u đã đánh giá và cũng có ít nhất một người dùng chung với sản phẩm *i*.  
+•|***R<sub>i</sub>(u)***|: Là số lượng sản phẩm liên quan trong ***Ri(u)***.  
+•***dev(i,j)***: Là độ lệch trung bình giữa các điểm đánh giá của sản phẩm *i* và sản phẩm *j*.  
 # III. Algorithm
 **Bước 1: Khởi tạo dữ liệu**  
 	Thu thập dữ liệu: Lấy dữ liệu từ các người dùng và các sản phẩm, tạo ra một ma trận đánh giá. Mỗi hàng trong ma trận đại diện cho một người dùng, và mỗi cột đại diện cho một sản phẩm. Giá trị trong ma trận là điểm đánh giá mà người dùng đã cho sản phẩm (hoặc có thể là một giá trị None/NaN nếu người dùng chưa đánh giá sản phẩm).  
 **Bước 2: Tính toán điểm trung bình của người dùng**  
 	Với mỗi người dùng *u*:   
-\mathbf{\mu}_\mathbf{u}=\frac{\mathbf{1}}{\left|\mathbf{R}_\mathbf{u}\right|}\sum_{\mathbf{j}\in\mathbf{R}_\mathbf{u}}\mathbf{r}_{\mathbf{uj}}  
-Trong đó \mathbf{R}_\mathbf{u} là tập hợp các sản phẩm mà người dùng *u* đã đánh giá.  
+	![](../images/calculateAverage.png)   
+	Trong đó ***Ru*** là tập hợp các sản phẩm mà người dùng *u* đã đánh giá.  
 
 **Bước 3: Tính độ lệch giữa các sản phẩm**  
-	Tạo một ma trận độ lệch \mathbf{dev}\left(\mathbit{i},\mathbit{j}\right)cho tất cả các cặp sản phẩm *i* và *j*:  
+	Tạo một ma trận độ lệch ***dev(i,j)*** cho tất cả các cặp sản phẩm *i* và *j*:  
 	Đối với mỗi cặp sản phẩm *i* và *j*:  
 	Tìm tất cả người dùng *u* đã đánh giá cả hai sản phẩm *i* và *j*.  
 	Tính độ lệch:  
-\mathbf{dev}\left(\mathbit{i},\mathbit{j}\right)=\frac{\mathbf{1}}{\left|\mathbf{U}_{\mathbit{ij}}\right|}\sum_{\mathbit{u}\in\mathbit{U}_{\mathbit{ij}}}\mathbit{r}_{\mathbit{ui}}-\mathbit{r}_{\mathbit{uj}}  
+	![](../images/itemDeviation.png) 
 
 **Bước 4: Dự đoán điểm đánh giá**  
 	Để dự đoán điểm đánh giá cho người dùng *u* trên sản phẩm *i*:  
 	Tính:  
-\widehat{\mathbit{r}_{\mathbit{ui}}}=\mathbf{\mu}_\mathbit{u}+\frac{\mathbf{1}}{\left|\mathbit{R}_\mathbit{i}\left(\mathbit{u}\right)\right|}\sum_{\mathbit{j}\in\mathbit{R}_\mathbit{i}\left(\mathbit{u}\right)}\mathbit{dev}\left(\mathbit{i},\mathbit{j}\right)  
+	![](../images/predictedRating.png) 
 ## Mã Giả (Pseudocode)
 ```Mã Giả (Pseudocode)
 function slopeOnePredict(userId, itemId, ratings):
