@@ -16,7 +16,7 @@ Mục tiêu: Dự đoán điểm đánh giá của người dùng đối với c
 ## 1. Tính điểm trung bình của người dùng
 ![](../images/calculateAverage.png)  
 Trong đó:  
-•	: Là điểm trung bình mà người dùng *u* đã đánh giá.  
+•![](../images/uu.png) : Là điểm trung bình mà người dùng *u* đã đánh giá.  
 •***R<sub>u</sub>***: Là tập hợp các sản phẩm mà người dùng *u* đã đánh giá.  
 •***R<sub>u</sub>***: Là số lượng sản phẩm người dùng *u* đã đánh giá.  
 •***r<sub>uj</sub>***: Là điểm đánh giá của người dùng *u* cho sản phẩm *j*.  
@@ -31,8 +31,8 @@ Trong đó:
 ## 3. Công thức Dự đoán
 ![](../images/predictedRating.png)  
 Trong đó:  
-•	: Là điểm dự đoán mà người dùng *u* sẽ cho sản phẩm *i*.  
-•	: Là điểm trung bình mà người dùng *u* đã đánh giá. Nó phản ánh cách người dùng này thường đánh giá sản phẩm (ví dụ: một số người dùng thường cho điểm cao hơn những người khác).  
+•![](../images/rui.png) : Là điểm dự đoán mà người dùng *u* sẽ cho sản phẩm *i*.  
+•![](../images/uu.png) : Là điểm trung bình mà người dùng *u* đã đánh giá. Nó phản ánh cách người dùng này thường đánh giá sản phẩm (ví dụ: một số người dùng thường cho điểm cao hơn những người khác).  
 •***R<sub>i</sub>(u)***: Là tập hợp các sản phẩm liên quan, tức là tập hợp các sản phẩm *j* mà người dùng u đã đánh giá và cũng có ít nhất một người dùng chung với sản phẩm *i*.  
 •|***R<sub>i</sub>(u)***|: Là số lượng sản phẩm liên quan trong ***Ri(u)***.  
 •***dev(i,j)***: Là độ lệch trung bình giữa các điểm đánh giá của sản phẩm *i* và sản phẩm *j*.  
