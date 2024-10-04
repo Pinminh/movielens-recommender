@@ -15,6 +15,8 @@ Cho một ma trận đánh giá *R* với kích thước *m × n*, trong đó:
 Mục tiêu: Dự đoán điểm đánh giá của người dùng đối với các sản phẩm mà họ chưa đánh giá (các ô **R*ij*** có giá trị rỗng trong ma trận) dựa trên các đánh giá hiện có.  
 ## 1. Tính điểm trung bình của người dùng
 \mathbf{\mu}_\mathbf{u}=\frac{\mathbf{1}}{\left|\mathbf{R}_\mathbf{u}\right|}\sum_{\mathbf{j}\in\mathbf{R}_\mathbf{u}}\mathbf{r}_{\mathbf{uj}}  
+![](calculateAverage.jpg)
+
 Trong đó:  
 	: Là điểm trung bình mà người dùng *u* đã đánh giá.  
 	: Là tập hợp các sản phẩm mà người dùng *u* đã đánh giá.  
