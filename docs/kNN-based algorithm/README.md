@@ -60,7 +60,7 @@ Remove the example from DistanceToNN and value.
 
 Put new example in DistanceToNN and value in sorted order.
 
-Return average of value
+Return average of value.
 
 
 ## IV.	Evaluation
