@@ -96,8 +96,8 @@ Since User 2 has rated X, Y, and T, using Slope One, we can predict User 2’s r
 Similarly, we can predict the ratings for User 3 on Y, User 4 on T, and User 5 on X.
 # II.	Formulation 
 Modeling the rating points of two users *U* and *V* as vectors.  
-- \( \mathbf{u} = (u_1, u_2, ..., u_n) \): is the rating vector of user *U* for products *1* to *n*.  
-- \( \mathbf{v} = (v_1, v_2, ..., v_n) \): is the rating vector of user *V* for products *1* to *n*.  
+- **U** = *(U<sub>1</sub>, U<sub>2</sub>, ..., U<sub>n</sub>)*: is the rating vector of user *U* for products *1* to *n*.  
+- **V** = *(V<sub>1</sub>, V<sub>2</sub>, ..., V<sub>n</sub>)*: is the rating vector of user *V* for products *1* to *n*.  
 The goal is to predict the rating of user *V* for product *n+1* based on the rating of user *U* for product *n+1*, i.e., *u_{n+1}*.  
 Slope One uses the simple formula **x + b**, where:  
 - **x** is the rating of the user for the known product.  
