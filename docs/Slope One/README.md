@@ -67,7 +67,7 @@ The average ratings for these 5 users are:
    - User 3: 4 - 3 = 1
    - User 4: 2 - 3 = -1
    - The average difference between X and Z is 0.33.
-
+ 
 - **Difference between X and T:**
    - User 1: 5 - 3 = 2
    - User 2: 4 - 2 = 2
