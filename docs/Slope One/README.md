@@ -108,7 +108,7 @@ We need to find **b** such that vector *U* plus **b** is as close as possible to
 ***S(b) = Σ<sub>i=1</sub><sup>n</sup> ((U<sub>i</sub> + b - V<sub>i</sub>)<sup>2</sup>***  
 The optimal **b** occurs when *S'(b) = 0*.  
 ⇒ ***Σ<sub>i=1</sub><sup>n</sup> U<sub>i</sub> + b - V<sub>i</sub> = 0***  
-⇒ ***b = Σ<sub>i=1</sub><sup>n</sup> V<sub>i</sub> - U<sub>i</sub>***   
+⇒ ![](../b.png)   
 ## 1. User Average Rating
 ![](../images/calculateAverage.png)  
 Where:  
@@ -129,8 +129,8 @@ Where:
 •***r<sub>ui</sub>***: The rating given by user *u* for item *i*.  
 •***r<sub>uj</sub>***: The rating given by user *u* for item *j*.  
 **Explanation:**  
-The meaning of \( dev(i,j) \): This represents the average deviation between two products \( i \) and \( j \), based on users who have rated both products. It indicates whether, on average, users rate product \( i \) higher or lower than product \( j \), and by how much.  
-**Reason for calculating the deviation:** The goal of Slope One is to utilize the relationships between products to predict user ratings. If it is known that users generally rate product \( i \) higher than product \( j \) by a specific amount, this information can be used to make predictions for users who have not rated both products.  
+The meaning of ***dev(i,j)***: This represents the average deviation between two products *i* and *j*, based on users who have rated both products. It indicates whether, on average, users rate product *i* higher or lower than product *j*, and by how much.  
+**Reason for calculating the deviation:** The goal of Slope One is to utilize the relationships between products to predict user ratings. If it is known that users generally rate product *i* higher than product *j* by a specific amount, this information can be used to make predictions for users who have not rated both products.  
 **For example:**  
 Assume many users have rated both products X and Y, and on average, they rate X one point higher than Y. This suggests that if a user has rated Y as 3, they are likely to rate X as 4 (3 + 1 = 4). This allows predictions for products that have not been rated, based on information from other products.  
 ## 3. Prediction Formula
@@ -142,11 +142,8 @@ Where:
 •|***R<sub>i</sub>(u)***|: Is the number of related items in ***R<sub>i</sub>(u)***.  
 •***dev(i,j)***: Is the average deviation between the ratings of item *i* and item *j*.  
 **Reason for this formula:** The predicted rating is calculated by:  
-1. Starting from the average rating of user \( \mu_u \) to adjust for their overall tendency.  
-2. Adding the average of the deviations between product \( i \) and other products that the user has rated. This allows the prediction to be adjusted based on information from similar products that the user has rated.  
-**Why divide by \( |R_i(u)| \):** This represents the number of products that the user has rated and can be compared with product \( i \). This division is meant to calculate the average deviation, providing a fair prediction based on all the products the user has rated.  
-**For example:**  
-If the user has rated two products X and Y, and we know that the average deviation between Z and X is +1, and between Z and Y is -0.5, then the prediction for Z will be the average of these deviations, adjusted against the user's average rating.  
+1. Starting from the average rating of user ![](../images/uu.png) to adjust for their overall tendency.  
+2. Adding the average of the deviations between product *i* and other products that the user has rated. This allows the prediction to be adjusted based on information from similar products that the user has rated.    
 # III. Algorithm
 **Step 1: Initialize Data**  
 	Collect data: Gather data from users and products to create a rating matrix. Each row in the matrix represents a user, and each column represents a product. The value in the matrix is the rating that the user has given to the product (or it could be a None/NaN value if the user has not rated the product).  
