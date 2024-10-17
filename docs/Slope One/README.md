@@ -108,7 +108,7 @@ We need to find **b** such that vector *U* plus **b** is as close as possible to
 ***S(b) = Σ<sub>i=1</sub><sup>n</sup> ((U<sub>i</sub> + b - V<sub>i</sub>)<sup>2</sup>***  
 The optimal **b** occurs when *S'(b) = 0*.  
 ⇒ ***Σ<sub>i=1</sub><sup>n</sup> U<sub>i</sub> + b - V<sub>i</sub> = 0***  
-⇒ ![](../b.png)   
+⇒ ![](../b.png)  
 ## 1. User Average Rating
 ![](../images/calculateAverage.png)  
 Where:  
