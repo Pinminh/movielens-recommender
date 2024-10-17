@@ -104,11 +104,10 @@ Slope One uses the simple formula **x + b**, where:
 - **b** is the average difference between the two products.  
 Here, we approximate **x** as the average rating of the user for all the products they have rated.  
 We need to find **b** such that vector *U* plus **b** is as close as possible to vector *V*.  
-***S(b) = (U<sub>1</sub> + b - V<sub>1</sub>)<sup>2</sup> + (U<sub>2</sub> + b - V<sub>2</sub>)<sup>2</sup> + ... + (U<sub>n</sub> + b - V<sub>n</sub>)<sup>2</sup>***  
-***S(b) = Σ<sub>i=1</sub><sup>n</sup> ((U<sub>i</sub> + b - V<sub>i</sub>)<sup>2</sup>***  
+![](../images/S(b).png)   
 The optimal **b** occurs when *S'(b) = 0*.  
-⇒ ***Σ<sub>i=1</sub><sup>n</sup> U<sub>i</sub> + b - V<sub>i</sub> = 0***  
-⇒ ![](../b.png)  
+![](../images/b.png)  
+   
 ## 1. User Average Rating
 ![](../images/calculateAverage.png)  
 Where:  
