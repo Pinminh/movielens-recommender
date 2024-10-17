@@ -98,15 +98,17 @@ Similarly, we can predict the ratings for User 3 on Y, User 4 on T, and User 5 o
 Modeling the rating points of two users *U* and *V* as vectors.  
 - **U** = *(U<sub>1</sub>, U<sub>2</sub>, ..., U<sub>n</sub>)*: is the rating vector of user *U* for products *1* to *n*.  
 - **V** = *(V<sub>1</sub>, V<sub>2</sub>, ..., V<sub>n</sub>)*: is the rating vector of user *V* for products *1* to *n*.  
-The goal is to predict the rating of user *V* for product *n+1* based on the rating of user *U* for product *n+1*, i.e., *u_{n+1}*.  
+The goal is to predict the rating of user *V* for product *n+1* based on the rating of user *U* for product *n+1*, i.e., *U<sub>n+1</sub>*.  
 Slope One uses the simple formula **x + b**, where:  
 - **x** is the rating of the user for the known product.  
 - **b** is the average difference between the two products.  
 Here, we approximate **x** as the average rating of the user for all the products they have rated.  
-We need to find **b** such that vector *U* plus **b** is as close as possible to vector *V*.
-![](../images/.png)  
-The optimal **b** occurs when *S'(b) = 0*.
-![](../images/.png)  
+We need to find **b** such that vector *U* plus **b** is as close as possible to vector *V*.  
+***S(b) = (U<sub>1</sub> + b - V<sub>1</sub>)<sup>2</sup> + (U<sub>2</sub> + b - V<sub>2</sub>)<sup>2</sup> + ... + (U<sub>n</sub> + b - V<sub>n</sub>)<sup>2</sup>***  
+***S(b) = Σ<sub>i=1</sub><sup>n</sup> ((U<sub>i</sub> + b - V<sub>i</sub>)<sup>2</sup>***  
+The optimal **b** occurs when *S'(b) = 0*.  
+⇒ ***Σ<sub>i=1</sub><sup>n</sup> U<sub>i</sub> + b - V<sub>i</sub> = 0***  
+⇒ ***b = Σ<sub>i=1</sub><sup>n</sup> V<sub>i</sub> - U<sub>i</sub>***   
 ## 1. User Average Rating
 ![](../images/calculateAverage.png)  
 Where:  
