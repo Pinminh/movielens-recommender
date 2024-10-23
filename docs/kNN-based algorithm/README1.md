@@ -1367,6 +1367,219 @@ The prediction
   </mfrac>
 </math>
 
+## <span style="color:green">3. k-NN Algorithm with z-score</span>
+
+A basic collaborative filtering algorithm, taking into account the z-score normalization of each user.
+
+The prediction 
+
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+  <msub>
+    <mrow data-mjx-texclass="ORD">
+      <mover>
+        <mi>r</mi>
+        <mo stretchy="false">^</mo>
+      </mover>
+    </mrow>
+    <mrow data-mjx-texclass="ORD">
+      <mi>u</mi>
+      <mi>i</mi>
+    </mrow>
+  </msub>
+</math> is set as:
+
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+  <msub>
+    <mrow data-mjx-texclass="ORD">
+      <mover>
+        <mi>r</mi>
+        <mo stretchy="false">^</mo>
+      </mover>
+    </mrow>
+    <mrow data-mjx-texclass="ORD">
+      <mi>u</mi>
+      <mi>i</mi>
+    </mrow>
+  </msub>
+  <mo>=</mo>
+  <msub>
+    <mi>&#x3BC;</mi>
+    <mi>u</mi>
+  </msub>
+  <mo>+</mo>
+  <msub>
+    <mi>&#x3C3;</mi>
+    <mi>u</mi>
+  </msub>
+  <mfrac>
+    <mrow>
+      <munder>
+        <mo data-mjx-texclass="OP" movablelimits="false">&#x2211;</mo>
+        <mrow data-mjx-texclass="ORD">
+          <mi>v</mi>
+          <mo>&#x2208;</mo>
+          <msubsup>
+            <mi>N</mi>
+            <mi>i</mi>
+            <mi>k</mi>
+          </msubsup>
+          <mo stretchy="false">(</mo>
+          <mi>u</mi>
+          <mo stretchy="false">)</mo>
+        </mrow>
+      </munder>
+      <mtext>sim</mtext>
+      <mo stretchy="false">(</mo>
+      <mi>u</mi>
+      <mo>,</mo>
+      <mi>v</mi>
+      <mo stretchy="false">)</mo>
+      <mo>&#x22C5;</mo>
+      <mo stretchy="false">(</mo>
+      <msub>
+        <mi>r</mi>
+        <mrow data-mjx-texclass="ORD">
+          <mi>v</mi>
+          <mi>i</mi>
+        </mrow>
+      </msub>
+      <mo>&#x2212;</mo>
+      <msub>
+        <mi>&#x3BC;</mi>
+        <mi>v</mi>
+      </msub>
+      <mo stretchy="false">)</mo>
+      <mrow data-mjx-texclass="ORD">
+        <mo>/</mo>
+      </mrow>
+      <msub>
+        <mi>&#x3C3;</mi>
+        <mi>v</mi>
+      </msub>
+    </mrow>
+    <mrow>
+      <munder>
+        <mo data-mjx-texclass="OP" movablelimits="false">&#x2211;</mo>
+        <mrow data-mjx-texclass="ORD">
+          <mi>v</mi>
+          <mo>&#x2208;</mo>
+          <msubsup>
+            <mi>N</mi>
+            <mi>i</mi>
+            <mi>k</mi>
+          </msubsup>
+          <mo stretchy="false">(</mo>
+          <mi>u</mi>
+          <mo stretchy="false">)</mo>
+        </mrow>
+      </munder>
+      <mtext>sim</mtext>
+      <mo stretchy="false">(</mo>
+      <mi>u</mi>
+      <mo>,</mo>
+      <mi>v</mi>
+      <mo stretchy="false">)</mo>
+    </mrow>
+  </mfrac>
+</math>
+
+or
+
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+  <msub>
+    <mrow data-mjx-texclass="ORD">
+      <mover>
+        <mi>r</mi>
+        <mo stretchy="false">^</mo>
+      </mover>
+    </mrow>
+    <mrow data-mjx-texclass="ORD">
+      <mi>u</mi>
+      <mi>i</mi>
+    </mrow>
+  </msub>
+  <mo>=</mo>
+  <msub>
+    <mi>&#x3BC;</mi>
+    <mi>i</mi>
+  </msub>
+  <mo>+</mo>
+  <msub>
+    <mi>&#x3C3;</mi>
+    <mi>i</mi>
+  </msub>
+  <mfrac>
+    <mrow>
+      <munder>
+        <mo data-mjx-texclass="OP" movablelimits="false">&#x2211;</mo>
+        <mrow data-mjx-texclass="ORD">
+          <mi>j</mi>
+          <mo>&#x2208;</mo>
+          <msubsup>
+            <mi>N</mi>
+            <mi>u</mi>
+            <mi>k</mi>
+          </msubsup>
+          <mo stretchy="false">(</mo>
+          <mi>i</mi>
+          <mo stretchy="false">)</mo>
+        </mrow>
+      </munder>
+      <mtext>sim</mtext>
+      <mo stretchy="false">(</mo>
+      <mi>i</mi>
+      <mo>,</mo>
+      <mi>j</mi>
+      <mo stretchy="false">)</mo>
+      <mo>&#x22C5;</mo>
+      <mo stretchy="false">(</mo>
+      <msub>
+        <mi>r</mi>
+        <mrow data-mjx-texclass="ORD">
+          <mi>u</mi>
+          <mi>j</mi>
+        </mrow>
+      </msub>
+      <mo>&#x2212;</mo>
+      <msub>
+        <mi>&#x3BC;</mi>
+        <mi>j</mi>
+      </msub>
+      <mo stretchy="false">)</mo>
+      <mrow data-mjx-texclass="ORD">
+        <mo>/</mo>
+      </mrow>
+      <msub>
+        <mi>&#x3C3;</mi>
+        <mi>j</mi>
+      </msub>
+    </mrow>
+    <mrow>
+      <munder>
+        <mo data-mjx-texclass="OP" movablelimits="false">&#x2211;</mo>
+        <mrow data-mjx-texclass="ORD">
+          <mi>j</mi>
+          <mo>&#x2208;</mo>
+          <msubsup>
+            <mi>N</mi>
+            <mi>u</mi>
+            <mi>k</mi>
+          </msubsup>
+          <mo stretchy="false">(</mo>
+          <mi>i</mi>
+          <mo stretchy="false">)</mo>
+        </mrow>
+      </munder>
+      <mtext>sim</mtext>
+      <mo stretchy="false">(</mo>
+      <mi>i</mi>
+      <mo>,</mo>
+      <mi>j</mi>
+      <mo stretchy="false">)</mo>
+    </mrow>
+  </mfrac>
+</math>
+
 </span>
 
 
