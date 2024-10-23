@@ -1,12 +1,15 @@
+import sys, os
+sys.path.append(os.path.abspath("../"))
+
 from fastapi import FastAPI, HTTPException
-from surprise import dump
 from surprise import KNNBasic, KNNWithMeans, KNNWithZScore, KNNBaseline
 from model import recommend_top_k, get_nearest_neighbors
+from core.utils import load_algo
 
 app = FastAPI()
 
-slope_pred, slope_algo = dump.load("../output/models/slope_one_full")
-knn_pred, knn_algo = dump.load("../output/models/knn_zscore_full")
+slope_pred, slope_algo = load_algo("slope_one_full")
+knn_pred, knn_algo = load_algo("knn_zscore_full")
 
 models = {
     "slope_one": (slope_pred, slope_algo),
@@ -45,7 +48,6 @@ async def neighbors(uid: int, k: int = 10, model: str = "knn_zscore"):
     _, algo = models[model]
     if not isinstance(algo, (KNNBasic, KNNWithMeans, KNNWithZScore, KNNBaseline)):
         raise HTTPException(status_code=422, detail=f"Model '{model}' no similarity measure")
-    
     
     neighbors = get_nearest_neighbors(algo, str(uid), k)
     
