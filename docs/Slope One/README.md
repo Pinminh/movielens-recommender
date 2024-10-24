@@ -38,12 +38,12 @@ There are several reasons why the algorithm doesn’t use a more complex form li
 
 ### Example:
 
-Assume there are four products (X, Y, Z, T) and five users: Alice, Bob, Charlie, Anna, and Peter, with the following rating table:
+Assume there are four products (X, Y, Z, T) and five users: User 1, User 2, User 3, User 4, User 5, with the following rating table:
 
 | User   | X  | Y  | Z  | T  |
 |--------|----|----|----|----|
 | User 1 | 5  | 3  | 4  | 3  |
-| User 2 | 4  | 2  | ?  | 2  |
+| User 2 | 4  | 2  | 2  | 2  |
 | User 3 | 4  | ?  | 3  | 3  |
 | User 4 | 2  | 4  | 3  | ?  |
 | User 5 | ?  | 4  | 2  | 4  |
