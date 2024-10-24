@@ -4,15 +4,18 @@ import pickle
 import numpy as np
 import pandas as pd
 
+from pathlib import Path
 from surprise import Dataset, Reader, dump
 
 
 __movielens_reader = Reader(line_format="user item rating timestamp", sep=",", skip_lines=1)
 
-DATASETS_PATH = os.path.relpath("../data/")
-ALGO_DUMP_PATH = os.path.relpath("../output/models/")
-CV_DUMP_PATH = os.path.relpath("../output/cv")
-GSCV_DUMP_PATH = os.path.relpath("../output/gscv")
+CURRENT_PATH = Path(__file__)
+PROJECT_PATH = CURRENT_PATH.parent.parent
+DATASETS_PATH = PROJECT_PATH.joinpath("data")
+ALGO_DUMP_PATH = PROJECT_PATH.joinpath("output", "models")
+CV_DUMP_PATH = PROJECT_PATH.joinpath("output", "cv")
+GSCV_DUMP_PATH = PROJECT_PATH.joinpath("output", "gscv")
 
 DEFAULT_DATASET_NAME = "ml-latest-small"
 RATINGS_FILENAME = "ratings.csv"
@@ -29,24 +32,24 @@ def trainset_to_dataset(trainset):
 
 
 def load_movielens(dataset_name=DEFAULT_DATASET_NAME):
-    file_path = os.path.join(DATASETS_PATH, dataset_name, RATINGS_FILENAME)
+    file_path = DATASETS_PATH.joinpath(dataset_name, RATINGS_FILENAME)
     return Dataset.load_from_file(file_path, reader=__movielens_reader)
 
 
 def store_algo(algo_name: str, pred=None, algo=None):
-    file_path = os.path.join(ALGO_DUMP_PATH, algo_name)
+    file_path = ALGO_DUMP_PATH.joinpath(algo_name)
     dir_path = os.path.dirname(file_path)
     os.makedirs(dir_path, exist_ok=True)
     dump.dump(file_path, pred, algo)
 
 
 def load_algo(algo_name: str):
-    file_path = os.path.join(ALGO_DUMP_PATH, algo_name)
+    file_path = ALGO_DUMP_PATH.joinpath(algo_name)
     return dump.load(file_path)
 
 
 def store_cv(cv_name: str, cv_result):
-    file_path = os.path.join(CV_DUMP_PATH, cv_name)
+    file_path = CV_DUMP_PATH.joinpath(cv_name)
     dir_path = os.path.dirname(file_path)
     os.makedirs(dir_path, exist_ok=True)
     
@@ -55,7 +58,7 @@ def store_cv(cv_name: str, cv_result):
 
 
 def load_cv(cv_name: str):
-    file_path = os.path.join(CV_DUMP_PATH, cv_name)
+    file_path = CV_DUMP_PATH.joinpath(cv_name)
     
     with open(file_path, "rb") as file:
         cv_result = pickle.load(file)
@@ -64,7 +67,7 @@ def load_cv(cv_name: str):
 
 
 def store_gscv(gscv_name: str, gscv):
-    file_path = os.path.join(GSCV_DUMP_PATH, gscv_name)
+    file_path = GSCV_DUMP_PATH.joinpath(gscv_name)
     dir_path = os.path.dirname(file_path)
     os.makedirs(dir_path, exist_ok=True)
     
@@ -73,7 +76,7 @@ def store_gscv(gscv_name: str, gscv):
 
 
 def load_gscv(gscv_name: str):
-    file_path = os.path.join(GSCV_DUMP_PATH, gscv_name)
+    file_path = GSCV_DUMP_PATH.joinpath(gscv_name)
     
     with open(file_path, "rb") as file:
         gscv = pickle.load(file)
