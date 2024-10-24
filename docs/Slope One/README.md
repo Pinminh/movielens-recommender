@@ -43,7 +43,7 @@ Assume there are four products (X, Y, Z, T) and five users: User 1, User 2, User
 | User   | X  | Y  | Z  | T  |
 |--------|----|----|----|----|
 | User 1 | 5  | 3  | 4  | 3  |
-| User 2 | 4  | 2  | 2  | 2  |
+| User 2 | 4  | 2  | ?  | 2  |
 | User 3 | 4  | ?  | 3  | 3  |
 | User 4 | 2  | 4  | 3  | ?  |
 | User 5 | ?  | 4  | 2  | 4  |
