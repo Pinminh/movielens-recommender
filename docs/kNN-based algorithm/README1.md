@@ -11,7 +11,7 @@ For example, fruit, vegetable and grain can be distinguished by their crunchines
 </p>
 
 <p align="center">
-  <b>Figure 1:</b> An exmaple of k-nearest neighbor algogirthms.
+  <b>Figure 1:</b> An example of k-nearest neighbor algogirthms.
 </p>
 
 There are two important concepts in the above example. One is the method to calculate the distance between sweet potato and other kinds of food. Another concept is the parameter k which decides how many neighbors will be chosen for kNN algorithm. The appropriate choice of k has significant impact on the diagnostic performance of kNN algorithm. A large k reduces the impact of variance caused by random error, but runs the risk of ignoring small but important pattern. The key to choose an appropriate k value is to strike a balance between overfitting and underfitting.
