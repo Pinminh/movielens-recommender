@@ -36,11 +36,11 @@ Cosine similarity is a mathematical metric used to measure the similarity betwee
 
 The cosine similarity is defined as:
 
-\text{cosine_sim}(u, v) = \frac{
+$$\text{cosine_sim}(u, v) = \frac{
 \sum\limits_{i \in I_{uv}} r_{ui} \cdot r_{vi}}
 {\sqrt{\sum\limits_{i \in I_{uv}} r_{ui}^2} \cdot
 \sqrt{\sum\limits_{i \in I_{uv}} r_{vi}^2}
-}
+}$$
 
 ///
 
