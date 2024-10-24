@@ -237,7 +237,7 @@ Mean Squared Difference (MSD) is a statistical method that measures the average 
 </p>
 
 <p align="center">
-  <b>Figure 3:</b> Examples of Mean Squared Error. A formula that is similar to Mean Squared Difference.
+  <b>Figure 3:</b> An example of Mean Squared Error. A formula that is similar to Mean Squared Difference.
 </p>
 
 The Mean Squared Difference is defined as:
