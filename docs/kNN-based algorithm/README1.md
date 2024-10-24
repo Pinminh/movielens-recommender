@@ -1,6 +1,8 @@
 # I.	Introduction
 
-k-nearest neighbor is one of the simplest (and effective in some cases) supervised-learning algorithms in Machine Learning. When training, this algorithm does not learn anything from the training data (this is also the reason this algorithm is classified as lazy learning), all calculations are performed when it needs to predict the results of new data. K-nearest neighbor can be applied to both types of Supervised learning problems: Classification and Regression. As a classification algorithm, kNN assigns a new data point to the majority set within its neighbors. As a regression algorithm, kNN makes a prediction based on the average of the values closest to the query point. KNN is also known as an Instance-based or Memory-based learning algorithm. kNN is a supervised learning algorithm in which 'k' represents the number of nearest neighbors considered in the classification or regression problem, and 'NN' stands for the nearest neighbors to the number chosen for k.
+The K-Nearest Neighbors (KNN) algorithm is a non-parametric, lazy learning algorithm that is based on proximity. In essence, it assumes that similar entities exist close to each other in the feature space. For any given user or movie, the algorithm locates the "K" number of most similar users or movies—its neighbors—and makes predictions or recommendations based on their preferences. This proximity is measured using various similarity metrics, such as cosine similarity,  Euclidean distance, or Pearson correlation, depending on the nature of the dataset and the specific recommendation task.
+
+Unlike more complex models that require extensive training and model building, KNN operates on-demand. Whenever a recommendation is needed, the algorithm simply compares the target with its nearest neighbors to generate predictions. This simplicity makes KNN an attractive choice, especially for early-stage recommendation systems.
 
 For example, fruit, vegetable and grain can be distinguished by their crunchiness and sweetness (Figure 1). For the purpose of displaying them on a two-dimension plot, only two characteristics are employed. In reality, there can be any number of predictors, and the example can be extended to incorporate any number of characteristics. In general, fruits are sweeter than vegetables. Grains are neither crunchy nor sweet. Our work is to determine which category does the sweet potato belong to. In this example we choose four nearest kinds of food, they are apple, green bean, lettuce, and corn.
 
@@ -9,9 +11,8 @@ For example, fruit, vegetable and grain can be distinguished by their crunchines
 </p>
 
 <p align="center">
-  <b>Image 1:</b> An exmaple of k-nearest neighbor algogirthms.
+  <b>Figure 1:</b> An exmaple of k-nearest neighbor algogirthms.
 </p>
-
 
 There are two important concepts in the above example. One is the method to calculate the distance between sweet potato and other kinds of food. Another concept is the parameter k which decides how many neighbors will be chosen for kNN algorithm. The appropriate choice of k has significant impact on the diagnostic performance of kNN algorithm. A large k reduces the impact of variance caused by random error, but runs the risk of ignoring small but important pattern. The key to choose an appropriate k value is to strike a balance between overfitting and underfitting.
 
@@ -30,7 +31,7 @@ Cosine similarity is a mathematical metric used to measure the similarity betwee
 </p>
 
 <p align="center">
-  <b>Image 2:</b> Examples of cosine similarity.
+  <b>Figure 2:</b> Examples of cosine similarity.
 </p>
 
 
@@ -236,7 +237,7 @@ Mean Squared Difference (MSD) is a statistical method that measures the average 
 </p>
 
 <p align="center">
-  <b>Image 3:</b> Examples of Mean Squared Error. A formula that is similar to Mean Squared Difference.
+  <b>Figure 3:</b> Examples of Mean Squared Error. A formula that is similar to Mean Squared Difference.
 </p>
 
 The Mean Squared Difference is defined as:
@@ -433,7 +434,7 @@ Pearson Correlation is a statistical method that measures the similarity or corr
 </p>
 
 <p align="center">
-  <b>Image 4:</b> Examples of scatter diagrams with different values of correlation coefficient (ρ).
+  <b>Figure 4:</b> Examples of scatter diagrams with different values of correlation coefficient (ρ).
 </p>
 
 Image: Examples of scatter diagrams with different values of correlation coefficient (ρ).
