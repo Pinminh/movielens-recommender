@@ -36,9 +36,7 @@ The baseline prediction ***b<sub>ui</sub>*** is:
 
 To accurately estimate the user and item biases ***b<sub>u</sub>*** and ***b<sub>i</sub>***, we solve the following **least squares optimization problem** with regularization to prevent overfitting:
 
-\[
-\min_{b_u, b_i} \sum_{(u,i) \in K} (r_{ui} - \mu - b_u - b_i)^2 + \lambda_1 \left( \sum_u b_u^2 + \sum_i b_i^2 \right)
-\]
+![](../images/min(b).png)  
 
 Where:
 - **K** is the set of all user-item pairs with observed ratings.
@@ -66,15 +64,11 @@ An alternative, albeit slightly less accurate, method involves **decoupling** th
 
 1. **Calculate Item Biases *b<sub>i</sub>***:
 
-\[
-b_i = \frac{\sum_{u \in R(i)} (r_{ui} - \mu)}{\lambda_2 + |R(i)|}
-\]
+![](../images/bi.png)  
 
 2. **Calculate User Biases *b<sub>u</sub>***:
 
-\[
-b_u = \frac{\sum_{i \in R(u)} (r_{ui} - \mu - b_i)}{\lambda_3 + |R(u)|}
-\]
+![](../images/bu.png)  
 
 Where:
 - ***R(i)*** is the set of all users who have rated item ***i***.
