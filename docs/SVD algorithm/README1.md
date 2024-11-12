@@ -3,6 +3,7 @@
  **SVD** is a mathematical technique that allows us to break down a matrix into its core components, called singular values and vectors. These values and vectors can then be used to make predictions about the original matrix. In the case of recommender systems, the matrix is usually a user-item matrix, where each row represents a user, each column represents an item, and the cells contain ratings or interactions between users and items.
 
   ![](../images/SVD_Formila.png) 
+  
 # II. Idea:
  The goal of using SVD to factorize a user-item matrix is to find two new matrices, one representing users and the other representing items, that when multiplied together, approximate the original matrix as closely as possible. These new matrices are called latent representations, and they contain important information about the users and items that can be used to make recommendations.
 
@@ -28,15 +29,21 @@
  - For a given user u, the elements of p<sub>u</sub> measure the extent of interest the user has in items that are high on the corresponding factors
  
 SVD introduces two new scalar variables: the user biases b<sub>u</sub> and the item biases b<sub>i</sub>.The user biases are supposed to capture the tendency of some users to rate items higher (or lower) than the average.The model is SVD is then as follows:
+
    ![](../images/SVD_Formula1.png)
+   
  Where: u is the global average of all the ratings in the dataset.
  In order to learn the model parameters (b<sub>u</sub>,b<sub>i</sub>, p<sub>u</sub> and q<sub>i</sub>) we minimize the regularized squared error:
+ 
    ![](../images/SVD_Formula2.png)
+   
  Where the constant λ4, which controls the extent of regularization, is usually determined by cross validation.
 
 ## 3.2. Stochastic Gradient Descent:
  Stochastic Gradient Descent (SGD) is a very common algorithm for optimization where the parameters (here the biases and the factor vectors) are iteratively incremented with the negative gradients w.r.t the optimization function. The algorithm essentially performs the following steps for a given number of iterations:
+ 
    ![](../images/SVD_Formula3.png)
+   
  Where y is the learning rate, landa is the  regularization, e<sub>ui</sub>=... is the error made by the model for the pair (u,i)
 
 # IV. Example:
