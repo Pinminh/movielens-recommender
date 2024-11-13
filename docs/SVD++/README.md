@@ -10,7 +10,7 @@ To achieve this, SVD++ adds a set of feature vectors for items to represent the 
 
 ### III. Formulation
 The prediction of SVD++ for a user-item pair ***(u, i)*** is based on the formula:
-
+![](../images/SVD++3.1.png)
 
 Where:
 - ***μ*** is the global average of all ratings.
@@ -19,7 +19,7 @@ Where:
 - ***R(u)*** is the set of items that user ***u*** has rated.
 - ***y<sub>j</sub>*** is an auxiliary feature vector for items in ***R(u)***, designed to capture factors from implicit feedback.
 
-In SVD++, each user ***u*** is modeled as \( p_u + \frac{1}{\sqrt{|R(u)|}} \sum_{j \in R(u)} y_j \). The term \( \frac{1}{\sqrt{|R(u)|}} \sum_{j \in R(u)} y_j \) helps model the user based on items they have interacted with, regardless of the ratings given. This ensures stability for the auxiliary vectors ***y<sub>j</sub>*** as the size of ***R(u)*** changes.
+In SVD++, each user ***u*** is modeled as ![](../images/SVD++3.2.png). The term ![](../images/SVD++3.3.png) helps model the user based on items they have interacted with, regardless of the ratings given. This ensures stability for the auxiliary vectors ***y<sub>j</sub>*** as the size of ***R(u)*** changes.
 
 To optimize the model parameters, SVD++ uses gradient descent with a loss function adjusted by regularization terms to prevent overfitting. During optimization, the values of ***b<sub>u</sub>***, ***b<sub>i</sub>***, ***p<sub>u</sub>***, ***q<sub>i</sub>***, and ***y<sub>j</sub>*** are updated in each iteration.
 
