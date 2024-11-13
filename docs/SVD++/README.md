@@ -9,9 +9,8 @@ To achieve this, SVD++ adds a set of feature vectors for items to represent the 
 
 
 ### III. Formulation
-The prediction of SVD++ for a user-item pair ***(u, i)*** is based on the formula:
-![](../images/SVD++3.1.png)
-
+The prediction of SVD++ for a user-item pair ***(u, i)*** is based on the formula:  
+![](../images/SVD++3.1.png)  
 Where:
 - ***μ*** is the global average of all ratings.
 - ***b<sub>u</sub>*** and ***b<sub>i</sub>*** are the user and item biases, respectively, adjusting for individual tendencies.
