@@ -1,14 +1,15 @@
-### I. Introduction
+# I. Introduction
 SVD++ is an improvement of the standard SVD algorithm, which enhances accuracy in recommendation systems by combining both implicit feedback and explicit feedback from users. This model, introduced by Yehuda Koren, has demonstrated superior effectiveness in scenarios where users have more implicit interactions than explicit ratings. Thanks to its ability to integrate various types of user interactions, SVD++ has become one of the leading models in recommendation systems, widely applied on platforms like Netflix, Amazon, and many other services.
 
 
-### II. Idea
+# II. Idea
 The idea of SVD++ is to not only rely on explicit ratings but also to utilize implicit interactions from users to better model their preferences. Implicit feedback provides an additional signal regarding user interests, especially when users have interacted with many items but haven’t given explicit ratings. For example, a user watching a movie without rating it can still be a useful indicator of their interest.
 
 To achieve this, SVD++ adds a set of feature vectors for items to represent the influence of items that the user has interacted with. This approach allows the model to capture user preferences based on the list of items they’ve interacted with, even in the absence of direct ratings. The combination of information from ratings and implicit interactions enables the SVD++ model to better understand user preferences.
 
 
-### III. Formulation
+# III. Formulation
+## Prediction Formula
 The prediction of SVD++ for a user-item pair ***(u, i)*** is based on the formula:  
 ![](../images/SVD++3.1.png)  
 Where:
@@ -22,8 +23,55 @@ In SVD++, each user ***u*** is modeled as ![](../images/SVD++3.2.png). The term 
 
 To optimize the model parameters, SVD++ uses gradient descent with a loss function adjusted by regularization terms to prevent overfitting. During optimization, the values of ***b<sub>u</sub>***, ***b<sub>i</sub>***, ***p<sub>u</sub>***, ***q<sub>i</sub>***, and ***y<sub>j</sub>*** are updated in each iteration.
 
+## Loss Function
+The loss function in SVD++ minimizes the regularized squared error between the actual and predicted ratings:
 
-### IV. Evaluation
+\[
+\mathcal{L} = \sum_{(u, i) \in K} \left(r_{ui} - \hat{r}_{ui} \right)^2 + \lambda \left(\sum_u \|p_u\|^2 + \sum_i \|q_i\|^2 + \sum_u \|b_u\|^2 + \sum_i \|b_i\|^2 + \sum_j \|y_j\|^2 \right)
+\]
+
+Where:
+- ***K*:** Set of observed user-item pairs ***(u, i)*** with ratings ***r<sub>ui</sub>***.  
+- The first term measures the prediction error for all known ratings.  
+- The second term is a regularization term (weighted by ***λ*** to prevent overfitting by penalizing large values of the parameters.
+
+---
+
+## **Optimization with Stochastic Gradient Descent (SGD)**
+To optimize the model parameters (***b<sub>u</sub>***, ***b<sub>i</sub>***, ***q<sub>i</sub>***, ***p<sub>u</sub>***, ***y<sub>j</sub>***), SVD++ employs **Stochastic Gradient Descent (SGD)**. The parameters are updated iteratively to minimize the loss function:
+
+1. **User Bias *b<sub>u</sub>*:**
+   \[
+   b_u \leftarrow b_u + \gamma \cdot (e_{ui} - \lambda \cdot b_u)
+   \]
+
+2. **Item Bias *b<sub>i</sub>*:**
+   \[
+   b_i \leftarrow b_i + \gamma \cdot (e_{ui} - \lambda \cdot b_i)
+   \]
+
+3. **Item Feature Vector *q<sub>i</sub>*:**
+   \[
+   q_i \leftarrow q_i + \gamma \cdot \left(e_{ui} \cdot \left(p_u + |R(u)|^{-\frac{1}{2}} \sum_{j \in R(u)} y_j\right) - \lambda \cdot q_i\right)
+   \]
+
+4. **User Feature Vector *p<sub>u</sub>*:**
+   \[
+   p_u \leftarrow p_u + \gamma \cdot (e_{ui} \cdot q_i - \lambda \cdot p_u)
+   \]
+
+5. **Auxiliary Feature Vectors *y<sub>j</sub>*:**
+   For all ***j ∈ R(u)***:
+   \[
+   y_j \leftarrow y_j + \gamma \cdot \left(e_{ui} \cdot |R(u)|^{-\frac{1}{2}} \cdot q_i - \lambda \cdot y_j\right)
+   \]
+
+Where:
+- ***e<sub>ui</sub>* = *r<sub>ui</sub>* - \hat*r<sub>ui</sub>*:** Prediction error.  
+- ***γ*:** Learning rate, controlling the size of the updates.  
+- ***λ*:** Regularization parameter, controlling overfitting.
+
+# IV. Evaluation
 The SVD++ model is highly regarded for its superior accuracy compared to traditional SVD, especially in systems with abundant implicit feedback. By incorporating unrated interactions, SVD++ significantly improves predictive accuracy for users with more implicit feedback than explicit ratings. When implemented on the Netflix dataset, SVD++ demonstrated outstanding performance in prediction.
 
 Additionally, SVD++ can integrate various types of implicit feedback. For example, if a user has both viewing history and search history, SVD++ can use both types of information to enhance prediction accuracy by adding separate feature vectors for each interaction type.
