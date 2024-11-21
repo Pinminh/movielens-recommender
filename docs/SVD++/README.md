@@ -1,5 +1,5 @@
 # I. Introduction
-SVD++ is an improvement of the standard SVD algorithm, which enhances accuracy in recommendation systems by combining both implicit feedback and explicit feedback from users. This model, introduced by Yehuda Koren, has demonstrated superior effectiveness in scenarios where users have more implicit interactions than explicit ratings. Thanks to its ability to integrate various types of user interactions, SVD++ has become one of the leading models in recommendation systems, widely applied on platforms like Netflix, Amazon, and many other services.
+SVD++ is an improvement of the standard SVD algorithm, which enhances accuracy in recommendation systems by combining both implicit feedback and explicit feedback from users. This model, introduced by Yehuda Koren and Robert Bell[^1], has demonstrated superior effectiveness in scenarios where users have more implicit interactions than explicit ratings. Thanks to its ability to integrate various types of user interactions, SVD++ has become one of the leading models in recommendation systems, widely applied on platforms like Netflix, Amazon, and many other services.
 
 
 # II. Idea
@@ -63,3 +63,5 @@ The SVD++ model is highly regarded for its superior accuracy compared to traditi
 Additionally, SVD++ can integrate various types of implicit feedback. For example, if a user has both viewing history and search history, SVD++ can use both types of information to enhance prediction accuracy by adding separate feature vectors for each interaction type.
 
 One drawback of SVD++ is its higher computational requirements due to the additional processing of implicit feedback vectors, increasing both memory usage and processing time. However, the accuracy benefits that SVD++ provides often offset its computational cost, making it an ideal choice for modern recommendation systems where implicit feedback data is abundant and valuable.
+
+[^1]: R.Bell & Y.Koren, Advances in Collaborative Filtering, 2007.
