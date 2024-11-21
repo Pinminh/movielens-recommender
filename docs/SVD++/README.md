@@ -26,48 +26,34 @@ To optimize the model parameters, SVD++ uses gradient descent with a loss functi
 ## Loss Function
 The loss function in SVD++ minimizes the regularized squared error between the actual and predicted ratings:
 
-\[
-\mathcal{L} = \sum_{(u, i) \in K} \left(r_{ui} - \hat{r}_{ui} \right)^2 + \lambda \left(\sum_u \|p_u\|^2 + \sum_i \|q_i\|^2 + \sum_u \|b_u\|^2 + \sum_i \|b_i\|^2 + \sum_j \|y_j\|^2 \right)
-\]
+![](../images/LossFunction.png)
 
 Where:
 - ***K*:** Set of observed user-item pairs ***(u, i)*** with ratings ***r<sub>ui</sub>***.  
 - The first term measures the prediction error for all known ratings.  
 - The second term is a regularization term (weighted by ***λ*** to prevent overfitting by penalizing large values of the parameters.
 
----
-
 ## **Optimization with Stochastic Gradient Descent (SGD)**
 To optimize the model parameters (***b<sub>u</sub>***, ***b<sub>i</sub>***, ***q<sub>i</sub>***, ***p<sub>u</sub>***, ***y<sub>j</sub>***), SVD++ employs **Stochastic Gradient Descent (SGD)**. The parameters are updated iteratively to minimize the loss function:
 
-1. **User Bias *b<sub>u</sub>*:**
-   \[
-   b_u \leftarrow b_u + \gamma \cdot (e_{ui} - \lambda \cdot b_u)
-   \]
+1. **User Bias *b<sub>u</sub>*:**  
+   ![](../images/SGD(1).png)
 
-2. **Item Bias *b<sub>i</sub>*:**
-   \[
-   b_i \leftarrow b_i + \gamma \cdot (e_{ui} - \lambda \cdot b_i)
-   \]
+2. **Item Bias *b<sub>i</sub>*:**  
+   ![](../images/SGD(2).png)
 
-3. **Item Feature Vector *q<sub>i</sub>*:**
-   \[
-   q_i \leftarrow q_i + \gamma \cdot \left(e_{ui} \cdot \left(p_u + |R(u)|^{-\frac{1}{2}} \sum_{j \in R(u)} y_j\right) - \lambda \cdot q_i\right)
-   \]
+3. **Item Feature Vector *q<sub>i</sub>*:**  
+   ![](../images/SGD(3).png)
 
-4. **User Feature Vector *p<sub>u</sub>*:**
-   \[
-   p_u \leftarrow p_u + \gamma \cdot (e_{ui} \cdot q_i - \lambda \cdot p_u)
-   \]
+4. **User Feature Vector *p<sub>u</sub>*:**  
+   ![](../images/SGD(4).png)
 
-5. **Auxiliary Feature Vectors *y<sub>j</sub>*:**
-   For all ***j ∈ R(u)***:
-   \[
-   y_j \leftarrow y_j + \gamma \cdot \left(e_{ui} \cdot |R(u)|^{-\frac{1}{2}} \cdot q_i - \lambda \cdot y_j\right)
-   \]
+5. **Auxiliary Feature Vectors *y<sub>j</sub>*:**  
+   For all ***j ∈ R(u)***:  
+   ![](../images/SGD(5).png)
 
 Where:
-- ***e<sub>ui</sub>* = *r<sub>ui</sub>* - \hat*r<sub>ui</sub>*:** Prediction error.  
+- ![](../images/PredictionError.png): Prediction error.  
 - ***γ*:** Learning rate, controlling the size of the updates.  
 - ***λ*:** Regularization parameter, controlling overfitting.
 
