@@ -62,7 +62,16 @@ $$
 # III. Formulas:
 
 ## 3.1. The SVD in linear algebra:
+The SVD of  mxn matrix A is given by the formula:
 
+$$
+A = U \Sigma V^T
+$$
+
+Where: 
+ - U: mxm matrix of the orthonormal eigenvectors of AA<sup>T</sup>.
+ - V<sup>T</sup>: transpose of a nxn matrix containing the orthonormal eigenvectors of A<sup>T</sup>A.
+ - &#931;: diagonal matrix with r elements equal to the root of the positive eigenvalues of AA<sup>T</sup> or A<sup>T</sup> (both matrics have the same positive eigenvalues anyway).
 
 ## 3.2. The SVD Model:
 SVD is developed on Baseline model.  
