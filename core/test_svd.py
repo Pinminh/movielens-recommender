@@ -2,7 +2,7 @@ from utils import load_movielens, load_algo, store_cv
 from evals import cv_kfolds_with_measures
 
 
-algo_name = "svd_full"
+algo_name = "svd"
 cv_name = "cv_svd"
 
 data = load_movielens()
