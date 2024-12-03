@@ -10,7 +10,7 @@ sim_options = {
     "user_based": True,
 }
 
-algo = KNNWithZScore(k=36, sim_options=sim_options)
+algo = KNNWithZScore(k=38, sim_options=sim_options)
 predictions = algo.fit(trainset).test(testset)
 
 algo_dump_name = "knn_zscore_full"

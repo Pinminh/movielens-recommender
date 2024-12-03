@@ -17,7 +17,7 @@ param_grid = {
 }
 
 seed_random_state()
-gs = GridSearchCV(KNNWithZScore, param_grid, measures=["rmse", "mae"], cv=10, joblib_verbose=3, n_jobs=2)
+gs = GridSearchCV(KNNWithZScore, param_grid, measures=["rmse", "mae"], cv=10, joblib_verbose=3, n_jobs=-1)
 gs.fit(data)
 
 store_gscv(gs_name, gs)

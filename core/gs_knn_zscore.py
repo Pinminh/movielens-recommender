@@ -9,7 +9,7 @@ gs_name = "gs_knn_zscore"
 data = load_movielens()
 
 param_grid = {
-    "k": np.arange(10, 51, 1),
+    "k": np.arange(30, 51, 2),
     "sim_options": {
         "name": ["msd", "cosine", "pearson"],
         "user_based": [False, True],
@@ -17,7 +17,7 @@ param_grid = {
 }
 
 seed_random_state()
-gs = GridSearchCV(KNNWithZScore, param_grid, measures=["rmse", "mae"], cv=10, joblib_verbose=3, n_jobs=2)
+gs = GridSearchCV(KNNWithZScore, param_grid, measures=["rmse", "mae"], cv=10, joblib_verbose=3, n_jobs=4)
 gs.fit(data)
 
 store_gscv(gs_name, gs)
