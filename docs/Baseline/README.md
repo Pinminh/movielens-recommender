@@ -84,7 +84,7 @@ These parameters help shrink the averages towards zero, mitigating the risk of o
 
 ## Further Improvements
 
-Baseline predictors can be further enhanced by incorporating **temporal dynamics** within the data. This involves considering how user preferences and item popularity evolve over time, leading to more accurate and dynamic bias estimates. Details on this approach are discussed in subsequent sections of the referenced material.
+Baseline predictors can be further enhanced by incorporating **temporal dynamics** within the data. This involves considering how user preferences and item popularity evolve over time, leading to more accurate and dynamic bias estimates. 
 
 ## Conclusion
 
