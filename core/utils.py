@@ -20,6 +20,10 @@ GSCV_DUMP_PATH = PROJECT_PATH.joinpath("output", "gscv")
 DEFAULT_DATASET_NAME = "ml-latest-small"
 RATINGS_FILENAME = "ratings.csv"
 
+CV_FOLDS = 10
+RANK_K = 20
+RANK_THRESHOLD = 3.5
+
 
 def seed_random_state(seed=250704):
     random.seed(seed)
