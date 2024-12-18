@@ -5,19 +5,19 @@ from surprise.model_selection import GridSearchCV
 from utils import load_movielens, seed_random_state, store_gscv
 
 
-gs_name = "gs_knn_zscore_user_pearson"
+gs_name = "gs_knn_zscore_msd"
 data = load_movielens()
 
 param_grid = {
-    "k": np.arange(10, 51, 1),
+    "k": np.arange(30, 40, 1),
     "sim_options": {
-        "name": ["pearson"],
+        "name": ["msd"],
         "user_based": [True],
     }
 }
 
 seed_random_state()
-gs = GridSearchCV(KNNWithZScore, param_grid, measures=["rmse", "mae"], cv=10, joblib_verbose=3, n_jobs=-1)
+gs = GridSearchCV(KNNWithZScore, param_grid, measures=["rmse"], cv=10, joblib_verbose=3, n_jobs=4)
 gs.fit(data)
 
 store_gscv(gs_name, gs)
